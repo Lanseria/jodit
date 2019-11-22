@@ -415,8 +415,11 @@ export namespace Widget {
 				dragbox,
 				(resp: IUploaderData) => {
 					let handler = editor.options.uploader.defaultHandlerSuccess || callbacks.upload
-					if (typeof handler === 'function') {
-						handler.call(editor, {
+					console.log(`new:${typeof handler}`)
+					console.log(`old:${typeof callbacks.upload}`)
+					console.log(`other:${typeof editor.options.uploader.defaultHandlerSuccess}`)
+					if (typeof callbacks.upload === 'function') {
+						callbacks.upload.call(editor, {
 							baseurl: resp.baseurl,
 							files: resp.files
 						} as IFileBrowserCallBackData);
