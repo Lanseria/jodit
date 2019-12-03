@@ -100,10 +100,12 @@ Config.prototype.uploader = {
 					'img' | 'a'
 					>tagName);
 
-				elm.setAttribute(attr, resp.baseurl + filename);
+				// elm.setAttribute(attr, resp.baseurl + filename);
+				elm.setAttribute(attr, filename);
 
 				if (tagName === 'a') {
-					elm.textContent = resp.baseurl + filename;
+					// elm.textContent = resp.baseurl + filename;
+					elm.textContent = filename;
 				}
 
 				if (isJoditObject(this.jodit)) {
@@ -337,7 +339,7 @@ export class Uploader extends Component implements IUploader {
 								reader.onerror = reject;
 								reader.onloadend = () => {
 									const resp: IUploaderData = {
-										baseurl: '',
+										// baseurl: '',
 										files: [reader.result],
 										isImages: [true]
 									} as IUploaderData;
@@ -400,13 +402,12 @@ export class Uploader extends Component implements IUploader {
 							extForReg = 'jpeg|jpg';
 						}
 
-						const reEnd = new RegExp('.(' + extForReg + ')$', 'i');
+						// const reEnd = new RegExp('.(' + extForReg + ')$', 'i');
 
-						if (!reEnd.test(newName)) {
-							newName += '.' + extension;
-						}
+						// if (!reEnd.test(newName)) {
+						// 	newName += '.' + extension;
+						// }
 					}
-
 					form.append(this.options.filesVariableName(i), fileList[i], newName);
 				}
 			}
